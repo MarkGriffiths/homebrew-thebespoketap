@@ -18,7 +18,7 @@ cask 'vlc-nightly' do
   preflight do
     File.open(shimscript, 'w') do |f|
       f.puts '#!/bin/bash'
-      f.puts "#{appdir}/VLC (Nightly).app/Contents/MacOS/VLC --color --intf dummy \"$@\""
+      f.puts "#{appdir}/VLC\\ \\(Nightly\\).app/Contents/MacOS/VLC --color --intf dummy \"$@\""
       FileUtils.chmod '+x', f
     end
   end
