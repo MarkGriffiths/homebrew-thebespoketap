@@ -20,7 +20,11 @@ cask 'vlc' do
   preflight do
     File.open(shimscript, 'w') do |f|
       f.puts '#!/bin/bash'
-      f.puts "#{appdir}/VLC.app/Contents/MacOS/VLC \"$@\""
+      f.puts 'interface=""'
+      f.puts 'if [ $0 = "cvlc" ]; then'
+      f.puts '  interface="--intf dummy"'
+      f.puts 'fi'
+      f.puts "#{appdir}/VLC.app/Contents/MacOS/VLC --color $interface \"$@\""
       FileUtils.chmod '+x', f
     end
   end
